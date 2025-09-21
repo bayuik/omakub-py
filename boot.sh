@@ -11,20 +11,20 @@ ascii_art='________                  __        ___.
 '
 
 echo -e "$ascii_art"
-echo "=> Omakub is for fresh Ubuntu 24.04+ installations only!"
+echo "=> OmakubPy is for fresh Ubuntu 24.04+ installations only!"
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 sudo apt-get update >/dev/null
 sudo apt-get install -y git >/dev/null
 
-echo "Cloning Omakub..."
-rm -rf ~/.local/share/omakub
-git clone https://github.com/basecamp/omakub.git ~/.local/share/omakub >/dev/null
-if [[ $OMAKUB_REF != "master" ]]; then
-	cd ~/.local/share/omakub
-	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
+echo "Cloning OmakubPy..."
+rm -rf ~/.local/share/omakub-py
+git clone https://github.com/bayuik/omakub-py.git ~/.local/share/omakub-py >/dev/null
+if [[ $OMAKUBPY_REF != "master" ]]; then
+	cd ~/.local/share/omakub-py
+	git fetch origin "${OMAKUBPY_REF:-stable}" && git checkout "${OMAKUBPY_REF:-stable}"
 	cd -
 fi
 
 echo "Installation starting..."
-source ~/.local/share/omakub/install.sh
+source ~/.local/share/omakub-py/install.sh
