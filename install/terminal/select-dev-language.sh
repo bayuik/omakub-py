@@ -1,10 +1,20 @@
 #!/bin/bash
 
+set -e
+
+PYTHON_DEFAULT_VERSION="3.12"
+mise plugins ls | grep -q '^python ' || mise plugins install python
+
+# install & set global
+mise install -y "python@${PYTHON_DEFAULT_VERSION}"
+mise use --global "python@${PYTHON_DEFAULT_VERSION}"
+mise reshim
+
 # Install default programming languages
 if [[ -v OMAKUB_FIRST_RUN_LANGUAGES ]]; then
   languages=$OMAKUB_FIRST_RUN_LANGUAGES
 else
-  AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Python" "Elixir" "Rust" "Java")
+  AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Elixir" "Rust" "Java")
   languages=$(gum choose "${AVAILABLE_LANGUAGES[@]}" --no-limit --height 10 --header "Select programming languages")
 fi
 
@@ -27,9 +37,6 @@ if [[ -n "$languages" ]]; then
       php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       php composer-setup.php --quiet && sudo mv composer.phar /usr/local/bin/composer
       rm composer-setup.php
-      ;;
-    Python)
-      mise use --global python@latest
       ;;
     Elixir)
       mise use --global erlang@latest

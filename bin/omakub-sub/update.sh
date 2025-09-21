@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CHOICES=(
-	"Omakub        Update Omakub itself and run any migrations"
+	"OmakubPy        Update OmakubPy itself and run any migrations"
 	"Ollama        Run LLMs, like Meta's Llama3, locally"
 	"LazyGit       TUI for Git"
 	"LazyDocker    TUI for Docker"

@@ -4,7 +4,7 @@
 if [[ -v OMAKUB_FIRST_RUN_LANGUAGES ]]; then
   languages=$OMAKUB_FIRST_RUN_LANGUAGES
 else
-  AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Python" "Elixir" "Rust" "Java")
+  AVAILABLE_LANGUAGES=("Ruby on Rails" "Node.js" "Go" "PHP" "Elixir" "Rust" "Java")
   languages=$(gum choose "${AVAILABLE_LANGUAGES[@]}" --no-limit --height 10 --header "Select programming languages to uninstall")
 fi
 
@@ -25,9 +25,6 @@ if [[ -n $languages ]]; then
       sudo apt -y purge php php-{curl,apcu,intl,mbstring,opcache,pgsql,mysql,sqlite3,redis,xml,zip}
       sudo apt -y autoremove
       sudo rm /usr/local/bin/composer
-      ;;
-    Python)
-      mise uninstall python@latest
       ;;
     Elixir)
       mise uninstall elixir@latest

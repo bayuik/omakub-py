@@ -18,13 +18,13 @@ sudo apt-get update >/dev/null
 sudo apt-get install -y git >/dev/null
 
 echo "Cloning OmakubPy..."
-rm -rf ~/.local/share/omakub-py
-git clone https://github.com/bayuik/omakub-py.git ~/.local/share/omakub-py >/dev/null
+rm -rf ~/.local/share/omakub
+git clone https://github.com/bayuik/omakub.git ~/.local/share/omakub >/dev/null
 if [[ $OMAKUBPY_REF != "master" ]]; then
-	cd ~/.local/share/omakub-py
+	cd ~/.local/share/omakub
 	git fetch origin "${OMAKUBPY_REF:-stable}" && git checkout "${OMAKUBPY_REF:-stable}"
 	cd -
 fi
 
 echo "Installation starting..."
-source ~/.local/share/omakub-py/install.sh
+source ~/.local/share/omakub/install.sh
